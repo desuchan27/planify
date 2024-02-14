@@ -1,8 +1,13 @@
+
 import { Button } from "@/components/ui/button";
 import { ChevronsRight } from "lucide-react";
 import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Page() {
+  
+  redirect('/login');
+
   return (
     <div>
       <div className="flex h-screen flex-col justify-center items-center space-y-4">

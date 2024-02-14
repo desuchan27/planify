@@ -1,3 +1,4 @@
+import SignOut from '@/components/SignOut'
 import { FC } from 'react'
 
 interface pageProps {
@@ -5,7 +6,7 @@ interface pageProps {
 }
 
 const page: FC<pageProps> = ({}) => {
-  return <div>page</div>
+  return <div><SignOut /></div>
 }
 
 export default page

@@ -4,6 +4,8 @@ import './globals.css'
 import { ToasterProvider } from '@/providers/ToasterProvider'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+import { SessionProvider } from '@/components/SessionProvider'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +22,16 @@ const RootLayout = async ({
   children: React.ReactNode
 }) => {
 
+  const session = await getServerSession()
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ToasterProvider />
-        {children}
-      </body>
+      <SessionProvider session={session}>
+        <body className={inter.className}>
+          <ToasterProvider />
+          {children}
+        </body>
+      </SessionProvider>
     </html>
   )
 }
