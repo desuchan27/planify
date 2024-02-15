@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Button } from './ui/button'
 import { PlusCircleIcon } from 'lucide-react'
 import UserProfile from './UserProfile'
+import MainSide from './ui/MainSide'
 
 interface SidebarProps {
   
@@ -14,6 +15,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
         <UserProfile />
       </div>
       <Button variant='secondary' className='w-full py-8 mb-2'><PlusCircleIcon className='mr-2'/>Create New</Button>
+      <MainSide />
     </div>
     )
 }
