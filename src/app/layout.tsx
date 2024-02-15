@@ -5,6 +5,7 @@ import { ToasterProvider } from '@/providers/ToasterProvider'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { SessionProvider } from '@/components/SessionProvider'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -28,6 +29,12 @@ const RootLayout = async ({
     <html lang="en">
       <SessionProvider session={session}>
         <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          ></ThemeProvider>
           <ToasterProvider />
           {children}
         </body>

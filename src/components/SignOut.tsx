@@ -11,7 +11,7 @@ interface SignOutProps {
 
 const SignOut: FC<SignOutProps> = ({}) => {
 
-    const { data: session, status: loading } = useSession();
+
     const handleSignOut = async () => {
         try{
             await signOut({ callbackUrl: `${window.location.origin}/login` });
@@ -23,7 +23,7 @@ const SignOut: FC<SignOutProps> = ({}) => {
     }
     
   return (
-    <div><Button onClick={handleSignOut}> <span className='text-sm'>{session?.user?.name}</span> Sign Out</Button></div>
+    <div><Button onClick={handleSignOut}>Sign Out</Button></div>
   )
 }
 

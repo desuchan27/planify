@@ -6,7 +6,7 @@ interface pageProps {
 }
 
 const page: FC<pageProps> = ({}) => {
-  return <div><SignOut /></div>
+  return <div></div>
 }
 
 export default page

@@ -2,13 +2,16 @@
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth/next';
 import { ReactNode } from 'react';
+import Navbar from '@/components/Navbar';
+import Sidebar from '@/components/Sidebar';
+
 
 interface LayoutProps {
     children: ReactNode;
 }
 
 
-export default async function Layout({ children }: LayoutProps ) {
+export default async function Layout({ children }: LayoutProps) {
 
     const session = await getServerSession()
     if (!session) {
@@ -17,6 +20,12 @@ export default async function Layout({ children }: LayoutProps ) {
 
     return (
         <div>
+            <div className='flex flex-row'>
+                <div className='hidden sm:flex sm:w-1/3 md:w-1/4 h-full'>
+                    <Sidebar />
+                </div>
+                <Navbar />
+            </div>
             {children}
         </div>
     )
