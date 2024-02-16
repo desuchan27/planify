@@ -18,7 +18,7 @@ const page: FC<pageProps> = ({}) => {
             className="mt-4 text-sm"
         >have an existing account? {""} 
             <span className="font-semibold text-primary">
-                <Link href={"/registration"}>
+                <Link href={"/login"}>
                     Log-In
                 </Link>
             </span>

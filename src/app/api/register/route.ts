@@ -9,6 +9,15 @@ export async function POST(req: Request) {
     const birthdateDate = parseISO(birthdate); // Parse birthdate string into a Date object
 
     try {
+
+        const existingUser = await db.user.findUnique({
+            where: { email },
+        });
+
+        if (existingUser) {
+            return new NextResponse('Email already exists', { status: 400 });
+        }
+
         if (!name) {
             return new NextResponse('Name is required', { status: 400 })
         }

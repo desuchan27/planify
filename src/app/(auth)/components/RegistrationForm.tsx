@@ -18,6 +18,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { NextResponse } from "next/server";
 
 
 
@@ -56,10 +57,10 @@ const formSchema = z
             }),
     })
     .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"], // path of error
-  });
-  
+        message: "Passwords don't match",
+        path: ["confirmPassword"], // path of error
+    });
+
 const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -93,15 +94,20 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                 }),
             });
 
-            if (!data) {
-                toast.error("Something went wrong. Please try again later.");
-            } else {
+            if (data.ok) {
                 toast.success("Registration successful");
                 router.push("/login");
+            } else {
+                const errorResponse = await data.json();
+                if (errorResponse.message === "Email already exists") {
+                    toast.error("Email already exists");
+                } else {
+                    toast.error("Something went wrong. Please try again later.");
+                }
             }
         } catch (error) {
             console.log("error", error);
-            toast.error("Server error");
+            toast.error("Something went wrong. Please try again later.");
         }
     };
 
@@ -118,7 +124,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormLabel>First Name</FormLabel>
                                 <FormControl>
                                     <Input
-                                        disabled={loading}
+
                                         placeholder="Input your first name"
                                         {...field} />
                                 </FormControl>
@@ -135,7 +141,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormControl>
                                     <Input
                                         placeholder="Input your valid email"
-                                        disabled={loading}
+
                                         {...field}
                                     />
                                 </FormControl>
@@ -150,10 +156,10 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                             <FormItem>
                                 <FormLabel>Username</FormLabel>
                                 <FormControl>
-                                    <Input 
-                                        disabled={loading}
-                                        placeholder="Minimum of 6 characters" 
-                                        {...field} 
+                                    <Input
+
+                                        placeholder="Minimum of 6 characters"
+                                        {...field}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -168,7 +174,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormLabel>Birthdate</FormLabel>
                                 <FormControl>
                                     <Input
-                                        disabled={loading}
+
                                         type="date"
                                         placeholder="Start Date"
                                         {...field}
@@ -187,7 +193,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input
-                                        disabled={loading}
+
                                         type="password"
                                         placeholder="Password must have one uppercase letter and one number"
                                         {...field}
@@ -205,7 +211,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input
-                                        disabled={loading}
+
                                         type="password"
                                         placeholder="Confirm your password"
                                         {...field}
@@ -215,7 +221,7 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                             </FormItem>
                         )}
                     />
-                    <Button disabled={loading} type="submit" className="w-full">
+                    <Button type="submit" className="w-full">
                         Sign-Up
                     </Button>
                 </form>

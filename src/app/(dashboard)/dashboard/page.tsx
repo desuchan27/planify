@@ -6,7 +6,11 @@ interface pageProps {
 }
 
 const page: FC<pageProps> = ({}) => {
-  return <div></div>
+  return (
+    <div>
+      <h1 className='text-2xl'> WORK IN PROGRESS...</h1>
+    </div>
+    )
 }
 
 export default page
