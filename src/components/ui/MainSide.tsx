@@ -16,8 +16,8 @@ const MainSide: FC<MainSideProps> = ({}) => {
       <Link href="/dashboard">
         <div
           className={cn(
-            'font-medium transition-colors hover:text-custom-purple rounded-md w-full text-center flex items-center px-10',
-            pathname === "/dashboard" ? 'bg-secondary my-1' : 'text-neutral-500'
+            'font-medium transition-colors hover:text-zinc-200 rounded-md w-full text-center flex items-center px-10',
+            pathname === "/dashboard" ? 'bg-secondary' : 'text-zinc-400'
           )}
         >
           <Activity className='mr-2 h-8 w-8'/>
@@ -27,8 +27,8 @@ const MainSide: FC<MainSideProps> = ({}) => {
       <Link href="/dashboard/daily">
         <div
           className={cn(
-            'font-medium transition-colors hover:text-custom-purple rounded-md w-full text-center flex items-center px-10',
-            pathname === "/dashboard/daily" ? 'bg-secondary my-1' : 'text-neutral-500'
+            'font-medium transition-colors hover:text-zinc-200 rounded-md w-full text-center flex items-center px-10',
+            pathname === "/dashboard/daily" ? 'bg-secondary' : 'text-zinc-400'
           )}
         >
           <NotebookPen className='mr-2 h-8 w-8'/>
@@ -38,8 +38,8 @@ const MainSide: FC<MainSideProps> = ({}) => {
       <Link href="/dashboard/work">
         <div
           className={cn(
-            'font-medium transition-colors hover:text-custom-purple rounded-md w-full text-center flex items-center px-10',
-            pathname === "/dashboard/work" ? 'bg-secondary my-1' : 'text-neutral-500'
+            'font-medium transition-colors hover:text-zinc-200 rounded-md w-full text-center flex items-center px-10',
+            pathname === "/dashboard/work" ? 'bg-secondary' : 'text-zinc-400'
           )}
         >
           <Briefcase className='mr-2 h-8 w-8'/>
@@ -49,8 +49,8 @@ const MainSide: FC<MainSideProps> = ({}) => {
       <Link href="/dashboard/plan">
         <div
           className={cn(
-            'font-medium transition-colors hover:text-custom-purple rounded-md w-full text-center flex items-center px-10',
-            pathname === "/dashboard/plan" ? 'bg-secondary my-1' : 'text-neutral-500'
+            'font-medium transition-colors hover:text-zinc-200 rounded-md w-full text-center flex items-center px-10',
+            pathname === "/dashboard/plan" ? 'bg-secondary' : 'text-zinc-400'
           )}
         >
           <Calendar className='mr-2 h-8 w-8'/>

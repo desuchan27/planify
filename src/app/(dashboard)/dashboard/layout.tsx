@@ -23,7 +23,7 @@ export default async function Layout({ children }: LayoutProps) {
                     </div>
                     <div className="flex flex-col flex-grow">
                         <Navbar />
-                        <div className="relative flex-grow px-8 py-8">{children}</div>
+                        <div className="relative flex-grow">{children}</div>
                     </div>
                 </div>
             </div>

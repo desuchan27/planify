@@ -17,7 +17,7 @@ const DateProvider = ({ }) => {
   const [currentDate, setCurrentDate] = useState(getDate());
 
   return (
-    <div className='flex flex-row items-center text-xs text-zinc-300'>
+    <div className='flex flex-row items-center text-xs font-extrabold text-zinc-500'>
       <p>{currentDate}</p>
       <CalendarIcon className='ml-2'/>
     </div>

@@ -1,16 +1,11 @@
 import { FC } from 'react'
-import Client from './components/Client'
 
 interface pageProps {
   
 }
 
 const page: FC<pageProps> = ({}) => {
-  return (
-    <div>
-      <Client />
-    </div>
-  )
+  return <div>page</div>
 }
 
 export default page

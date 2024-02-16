@@ -124,7 +124,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({ }) => {
                                 <FormLabel>First Name</FormLabel>
                                 <FormControl>
                                     <Input
-
                                         placeholder="Input your first name"
                                         {...field} />
                                 </FormControl>

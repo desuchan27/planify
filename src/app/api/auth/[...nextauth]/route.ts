@@ -1,5 +1,6 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { User } from "@prisma/client"; // Import the User model from Prisma
 
 const handler = NextAuth({
     providers: [
@@ -13,7 +14,6 @@ const handler = NextAuth({
 
             async authorize(credentials) {
                 // Add logic here to look up the user from the credentials supplied
-
                 const authResponse = await fetch("http://localhost:3000/api/user", {
                     method: "POST",
                     headers: { "content-type": "application/json" },
@@ -21,12 +21,12 @@ const handler = NextAuth({
                         email: credentials?.email,
                         password: credentials?.password,
                     })
-                })
+                });
 
-                const user = await authResponse.json();
+                const user: User | null = await authResponse.json(); // Assuming User is the Prisma User model
 
                 if (user) {
-                    return user;
+                    return { ...user, id: user.id, username: user.username }; // Include the id and username properties from Prisma User model
                 } else {
                     return null;
                 }
@@ -35,4 +35,4 @@ const handler = NextAuth({
     ],
 });
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
